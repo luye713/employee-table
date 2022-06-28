@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import CategoryList from './Components/CategoryList/CategoryList';
@@ -6,24 +6,24 @@ import EmployeeList from './Components/EmployeeList/EmployeeList';
 import AddEmployee from './Components/AddEmployee/AddEmployee';
 import employeeData from './mock-employees.json';
 
-class App extends Component{
-  state = {employees: []}
+export default function App(props){
+  const [employees, setEmployees] = useState([])
 
-  async componentDidMount(){
-    this.setState({employees: employeeData.employees}) 
-    console.log(this.state.employees)
+  function deleteOne(employee){
+    setEmployees(employees.filter((e) => e != employee))
   }
-  
-  render() {
+
+  useEffect( () => {
+     setEmployees(employeeData.employees)
+  }, [])
+
     return (
       <div className="App">
         <Header />
         <CategoryList />
-        <EmployeeList employees={this.state.employees}/>
+        <EmployeeList employees={employees} deleteOne={deleteOne}/>
         <AddEmployee />
       </div>
     );
-  }
 }
 
-export default App;

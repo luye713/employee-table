@@ -6,9 +6,12 @@ export default function EmployeeList(props){
         <div>
             {props.employees.map((employee)=>{
                 return  <EmployeeListItem 
+                            employee={employee}
                             firstName={employee.firstName} 
                             lastName={employee.lastName} 
-                            salary={employee.salary}/>
+                            salary={employee.salary}
+                            deleteOne={props.deleteOne}
+                            />
             })}
         </div>
     )

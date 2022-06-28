@@ -3,9 +3,9 @@ export default function EmployeeListItem(props){
         <div>
             <p>{props.firstName}</p>
             <p>{props.lastName}</p>
-            <p>{props.salary}</p>
+            <p>${props.salary.toLocaleString()}</p>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => props.deleteOne(props.employee)}>Delete</button>
         </div>
     )
 }
