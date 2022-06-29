@@ -6,24 +6,24 @@ import employeeData from "../../mock-employees.json";
 export default function EmployeeList() {
   const [employees, setEmployees] = useState(employeeData.employees);
 
-  function deleteOne(index) {
+  const deleteOne = (index) => {
     let newArray = [...employees];
     console.log(index);
     newArray.splice(index, 1);
     console.log(newArray);
     setEmployees(newArray);
-  }
+  };
 
-  function handleEdit(employee, index) {
+  const handleEdit = (employee, index) => {
     let newArray = [...employees];
     newArray[index] = employee;
     setEmployees(newArray);
-  }
+  };
 
-  function handleAdd(employee) {
+  const handleAdd = (employee) => {
     let newArray = [...employees, employee];
     setEmployees(newArray);
-  }
+  };
 
   return (
     <div>
@@ -35,7 +35,7 @@ export default function EmployeeList() {
           handleEdit={handleEdit}
         />
       ))}
-      <AddEmployee handleAdd={handleAdd}/>
+      <AddEmployee handleAdd={handleAdd} />
     </div>
   );
 }

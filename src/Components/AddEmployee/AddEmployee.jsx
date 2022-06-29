@@ -5,14 +5,14 @@ export default function AddEmployee(props) {
   const [employee, setEmployee] = useState({
     firstName: "",
     lastName: "",
-    salary: "",
+    salary: 0,
   });
 
-  function submitForm(e) {
+  const submitForm = (e) => {
     e.preventDefault();
     props.handleAdd(employee);
     setIsAdding(false);
-  }
+  };
 
   return (
     <div>
@@ -25,6 +25,7 @@ export default function AddEmployee(props) {
             name="firstName"
             type="text"
             placeholder={employee.firstName}
+            required
           />
           <input
             onChange={(event) =>
@@ -33,19 +34,23 @@ export default function AddEmployee(props) {
             name="lastName"
             type="text"
             placeholder={employee.lastName}
+            required
           />
           <input
             onChange={(event) =>
               setEmployee({ ...employee, salary: event.target.value })
             }
             name="salary"
-            type="text"
+            type="number"
             placeholder={employee.salary}
+            required
           />
           <button type="submit">Submit</button>
         </form>
       ) : null}
-      <button onClick={() => setIsAdding(true)}>Add Employee</button>
+      <button onClick={() => setIsAdding(!isAdding)}>
+        {isAdding ? "Cancel" : "Add Employee"}
+      </button>
     </div>
   );
 }

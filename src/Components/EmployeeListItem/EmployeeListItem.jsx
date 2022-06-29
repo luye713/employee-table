@@ -5,14 +5,14 @@ export default function EmployeeListItem(props) {
   const [employee, setEmployee] = useState({
     firstName: "",
     lastName: "",
-    salary: "",
+    salary: 0,
   });
 
-  function submitForm(e) {
+  const submitForm = (e) => {
     e.preventDefault();
     props.handleEdit(employee, props.index);
     setIsEditing(false);
-  }
+  };
 
   useEffect(() => {
     setEmployee({
@@ -33,7 +33,8 @@ export default function EmployeeListItem(props) {
             }
             name="firstName"
             type="text"
-            placeholder={employee.firstName}
+            value={employee.firstName}
+            required
           />
           <input
             onChange={(event) =>
@@ -41,15 +42,17 @@ export default function EmployeeListItem(props) {
             }
             name="lastName"
             type="text"
-            placeholder={employee.lastName}
+            value={employee.lastName}
+            required
           />
           <input
             onChange={(event) =>
               setEmployee({ ...employee, salary: event.target.value })
             }
             name="salary"
-            type="text"
-            placeholder={employee.salary}
+            type="number"
+            value={employee.salary}
+            required
           />
           <button type="submit">Submit</button>
         </form>
@@ -57,10 +60,18 @@ export default function EmployeeListItem(props) {
         <div>
           <p>{employee.firstName}</p>
           <p>{employee.lastName}</p>
-          <p>${employee.salary.toLocaleString()}</p>
+          <p>
+            {Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(employee.salary)}
+          </p>
         </div>
       )}
-      <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
+      <button onClick={() => setIsEditing(!isEditing)}>
+        {" "}
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
       <button onClick={() => props.deleteOne(props.index)}>Delete</button>
     </div>
   );
