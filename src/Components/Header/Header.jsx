@@ -1,7 +1,5 @@
-export default function Header(props){
-    return(
-        <div>
-            EMPLOYEES
-        </div>
-    )
+import "./Header.css";
+
+export default function Header() {
+  return <h1>Employees</h1>;
 }

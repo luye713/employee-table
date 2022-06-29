@@ -1,3 +1,4 @@
+import "./EmployeeListItem.css";
 import { useEffect, useState } from "react";
 
 export default function EmployeeListItem(props) {
@@ -24,14 +25,13 @@ export default function EmployeeListItem(props) {
   }, [props.employee]);
 
   return (
-    <div>
+    <div className="employee-wrapper">
       {isEditing ? (
         <form onSubmit={(e) => submitForm(e)}>
           <input
             onChange={(event) =>
               setEmployee({ ...employee, firstName: event.target.value })
             }
-            name="firstName"
             type="text"
             value={employee.firstName}
             required
@@ -40,7 +40,6 @@ export default function EmployeeListItem(props) {
             onChange={(event) =>
               setEmployee({ ...employee, lastName: event.target.value })
             }
-            name="lastName"
             type="text"
             value={employee.lastName}
             required
@@ -49,15 +48,16 @@ export default function EmployeeListItem(props) {
             onChange={(event) =>
               setEmployee({ ...employee, salary: event.target.value })
             }
-            name="salary"
             type="number"
             value={employee.salary}
             required
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn primary">
+            Submit
+          </button>
         </form>
       ) : (
-        <div>
+        <div className="employee">
           <p>{employee.firstName}</p>
           <p>{employee.lastName}</p>
           <p>
@@ -68,11 +68,18 @@ export default function EmployeeListItem(props) {
           </p>
         </div>
       )}
-      <button onClick={() => setIsEditing(!isEditing)}>
-        {" "}
+      <button
+        onClick={() => setIsEditing(!isEditing)}
+        className="btn secondary"
+      >
         {isEditing ? "Cancel" : "Edit"}
       </button>
-      <button onClick={() => props.deleteOne(props.index)}>Delete</button>
+      <button
+        onClick={() => props.deleteOne(props.index)}
+        className="btn tertiary"
+      >
+        Delete
+      </button>
     </div>
   );
 }

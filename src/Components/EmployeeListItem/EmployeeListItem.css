@@ -1,0 +1,18 @@
+.employee-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.employee-wrapper form {
+  flex: 1;
+}
+
+.employee {
+  display: flex;
+  flex: 1;
+}
+
+.employee p {
+  width: 10rem;
+}

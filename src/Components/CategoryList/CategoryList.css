@@ -1,0 +1,12 @@
+#category ul {
+    list-style: none;
+    padding: 1rem 0;
+    display: flex;
+    border-bottom: 1px solid #a3b18a;
+}
+
+#category ul li {
+    font-weight: 500;
+    color: #a3b18a;
+    width: 10rem;
+}

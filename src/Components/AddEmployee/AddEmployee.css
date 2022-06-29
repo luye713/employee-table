@@ -1,0 +1,12 @@
+.add-employee-wrapper {
+    margin-top: 1rem;
+    display: flex;
+}
+
+.add-employee-wrapper form {
+    flex: 1;
+}
+
+.add-employee-wrapper >.primary {
+    margin-left: auto;
+}

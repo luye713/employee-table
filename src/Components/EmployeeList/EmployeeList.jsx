@@ -1,3 +1,4 @@
+import "./EmployeeList.css";
 import { useState } from "react";
 import EmployeeListItem from "../EmployeeListItem/EmployeeListItem";
 import AddEmployee from "../AddEmployee/AddEmployee";
@@ -26,7 +27,7 @@ export default function EmployeeList() {
   };
 
   return (
-    <div>
+    <div id="employee-list-wraper">
       {employees.map((employee, index) => (
         <EmployeeListItem
           employee={employee}

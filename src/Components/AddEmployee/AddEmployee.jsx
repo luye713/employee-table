@@ -1,3 +1,4 @@
+import "./AddEmployee.css";
 import { useState } from "react";
 
 export default function AddEmployee(props) {
@@ -15,40 +16,39 @@ export default function AddEmployee(props) {
   };
 
   return (
-    <div>
+    <div className="add-employee-wrapper">
       {isAdding ? (
         <form onSubmit={(e) => submitForm(e)}>
           <input
             onChange={(event) =>
               setEmployee({ ...employee, firstName: event.target.value })
             }
-            name="firstName"
             type="text"
-            placeholder={employee.firstName}
             required
           />
           <input
             onChange={(event) =>
               setEmployee({ ...employee, lastName: event.target.value })
             }
-            name="lastName"
             type="text"
-            placeholder={employee.lastName}
             required
           />
           <input
             onChange={(event) =>
               setEmployee({ ...employee, salary: event.target.value })
             }
-            name="salary"
             type="number"
-            placeholder={employee.salary}
             required
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn primary">
+            Submit
+          </button>
         </form>
       ) : null}
-      <button onClick={() => setIsAdding(!isAdding)}>
+      <button
+        onClick={() => setIsAdding(!isAdding)}
+        className={isAdding ? "btn secondary" : "btn primary"}
+      >
         {isAdding ? "Cancel" : "Add Employee"}
       </button>
     </div>
